@@ -37,25 +37,60 @@
 \end{center}
 
 \section*{Data Set}
-The data set will consist of large amount of images with various resolutions and corresponding labels for a subset of the images. We might need to reduce the resolution of these images (e.g. reduce to 32 * 32) and derive Gist descriptor for each image during preprocessing.
+The data set will consist of large amount of images with various resolutions and corresponding 
+labels for a subset of the images. We will likely need to reduce the resolution of these images 
+(e.g. reduce to 32 * 32) and derive Gist descriptors for each image during preprocessing. For example,
+The University of Toronto hosts a dataset of nautral images at:
+\[
+\text{http://www.cs.utoronto.ca/~kriz/cifar.html}
+\]
 
 \section*{Project Idea}
-Billions of images are now available online. We wonder whether there are efficient ways for clustering similar images and scene recognition. There have been some on-going research in this area. Various algorithms have been developed to accomplish this job and have achieved some amazing success.\\
+Billions of images are now available online. We wonder whether there are efficient ways for clustering
+similar images and scene recognition. There have been a great deal of on-going research area, namely under
+the moniker of `Locally Sensitive Hashing', and related technical terms (Kernalized Locally Sensitive Hashing, etc).
+For our project, we will investigate, implement, and evaluate some of the ideas from the image-search literature,
+and try to incorporate modern ideas and architecture in our implementation\\
 \\
-However, the research that we have noticed involves training classifiers with huge amounts of images (on the scale of million). Accuracy tends to be worse with a smaller data set. Due to the computational limitation, we would like to explore this area on a smaller scale (maybe thousands of images). We want to see whether we can improve the algorithms so that it returns more accurate results on a smaller scale with similar computational complexity.
+However, the research that we have noticed involves training classifiers with huge amounts of images. Accuracy 
+tends to be worse with a smaller data set. Due to the computational limitation, we would like to explore this
+area on a smaller scale (maybe thousands of images). We want to see whether we can improve the algorithms so 
+that it returns more accurate results on a smaller scale with similar computational complexity while avoiding
+overfitting.
 
 \section*{Software to write}
-We need to code a software that will pre-process raw images. During the pre-processing step, it will reduce resolution and derive Gist descriptor for each image. Moreover, we will implement the clustering algorithm (possibly distributed?) and see whether we can improve the results.
+We need to code a software that will pre-process raw images. During the pre-processing step, it will reduce 
+resolution and derive Gist descriptor for each image. Moreover, we will implement the clustering algorithm 
+(possibly distributed?) and see whether we can improve existing techniques and results. 
 
 \section*{Papers to read}
-Antonio Torralba, Rob Fergus and William T. Freeman.	 80 million tiny images: a large dataset for non-parametric object and scene recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 30, NO. 11, November 2008
+Antonio Torralba, Rob Fergus and William T. Freeman.	 80 million tiny images: a large dataset for 
+non-parametric object and scene recognition. IEEE Transactions on Pattern Analysis and Machine 
+Intelligence, vol. 30, NO. 11, November 2008\\
+\\
+Brian Kulis, Kristen Grauman. Kernelized Locality-Sensitive Hashing for Scalable Image Search. IEEE Conference on 
+Computer Vision (ICCV). \\
+\\
+Gionis, A.; Indyk, P., Motwani, R. (1999). , "Similarity Search in High Dimensions via Hashing". Proceedings 
+of the 25th Very Large Database (VLDB) Conference. (The original paper - this is good reading). \\
+\\
+Koga, Hisashi, Tetsuo Ishibashi, and Toshinori Watanabe (2007), "Fast agglomerative hierarchical 
+clustering algorithm using Locality-Sensitive Hashing", Knowledge and Information Systems 12.1: 25-53,.\\
+\\
+Also great information: (Ullman book on massive datasets) 
+\[
+\text{http://infolab.stanford.edu/~ullman/mmds.html}
+\]
+
 
 \section*{Teammates and work division}
 Laxman Dhulipala, Harry Gifford, Wangzi He, Keith Miller
 
-Laxman and Harry will code the clustering algorithm. Wangzi and Keith will code the preprocessing software. (I don't know how to divide the work. We should discuss it. Feel free to change.)
+Laxman and Harry will code the clustering algorithm. Wangzi and Keith will code the preprocessing 
+software. We will all likely collaborate on all parts of the work, but this is roughly the division of labour. 
 
 \section*{Midterm milestone}
-We hope to finish the pre-processing software and the clustering algorithm. We want to test them on a small scale of images and get some data on accuracy. 
+We hope to finish the pre-processing software and the clustering algorithm. We want to test them on a small 
+scale of images and get some data on the accuracy of our technique.  
 
 \end{document}
