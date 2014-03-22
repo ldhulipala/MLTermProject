@@ -74,7 +74,8 @@ ultimately used EM (Expectation Maximization) with the assumption that the under
 arises from a mixture model to classify text. 
 
 Another recent approach for feature learning pioneered by Raina et al. runs under the 
-moniker of Self-Taught Learning. Self-Taught learning works similarly to the EM-based 
+moniker of Self-Taught Learning \cite{raina}. Self-Taught learning works similarly to 
+the EM-based 
 approach described above, but makes no assumptions about the underlying distribution or
 classes of the unsupervised data (there is no assumption that the unlabeled data even 
 contains objects that are provided in the training and test datasets). Instead, they exploit
@@ -82,9 +83,10 @@ the fact that the unsupervised data is a collection of natural images. This make
 algorithm significantly easier to apply in practice, as one can simply take a set of labeled
 examples, and augment it with an enormous unlabeled data-set of support examples.
 
+Our approach to feature learning relies on an elegant and simple algorithm that was
+recently published by Adam Coates and Andrew Ng \cite{coates}
 
-
-
+ 
 \section{Submission of papers to NIPS 2013}
 
 NIPS requires electronic submissions.  The electronic submission site is  
