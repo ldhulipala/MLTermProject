@@ -84,7 +84,13 @@ algorithm significantly easier to apply in practice, as one can simply take a se
 examples, and augment it with an enormous unlabeled data-set of support examples.
 
 Our approach to feature learning relies on an elegant and simple algorithm that was
-recently published by Adam Coates and Andrew Ng \cite{coates}
+recently published by Adam Coates and Andrew Ng \cite{coates}. They propose the use
+of $k$-means clustering for feature learning as it is a simple and easily paralellizable
+algorithm that can be deployed at scale. In an earlier work, they show how $k$-means in 
+practice is highly competitive against the state-of-the-art feature learning algorithms, 
+often beating them \cite{coates11}. In particular, they show a surprising result that 
+$k$-means based feature learning with a single layer neural network achieves state-of-the-art
+error rate on the CIFAR-10 dataset. 
 
  
 \section{Submission of papers to NIPS 2013}
