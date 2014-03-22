@@ -5,7 +5,7 @@
 %\documentstyle[nips13submit_09,times,art10]{article} % For LaTeX 2.09
 
 
-\title{Unsupervised Feature Learning for Object Recognition}
+\title{Unsupervised Feature Learning for Object Classification}
 
 
 \author{
@@ -13,7 +13,7 @@ Laxman Dhulipala, Harry Gifford, Wangzi He \\
 Department of Computer Science\\
 Carnegie Mellon University University\\
 Pittsburgh, PA 15213 \\
-\texttt{ldhulipa, wangzih, hgifford@andrew.cmu.edu} \\
+\texttt{\{ldhulipa, wangzih, hgifford\}@andrew.cmu.edu} \\
 }
 
 % The \author macro works with any number of authors. There are two commands
@@ -35,12 +35,55 @@ Pittsburgh, PA 15213 \\
 \maketitle
 
 \begin{abstract}
-The abstract paragraph should be indented 1/2~inch (3~picas) on both left and
-right-hand margins. Use 10~point type, with a vertical spacing of 11~points.
-The word \textbf{Abstract} must be centered, bold, and in point size 12. Two
-line spaces precede the abstract. The abstract must be limited to one
-paragraph.
+A major theme in modern object recognition research has been the use of 
+features to boost classification techniques. Stemming from the seminal work
+of Viola and Jones, features and feature learning techniques have been used 
+year after year to improve existing object recognition algorithms, and increase 
+classification rates. In this work, we implement and evaluate an object classification framework 
+that first learns a dictionary of features, and subsequently uses this feature basis 
+to represent and classify images into categories. 
 \end{abstract}
+
+\section{Introduction}
+
+Object Recognition as a field has its roots firmly embedded in a long history 
+of research in Neuroscience. Stemming from Hubel and Wiesel's discovery in the 
+late 1950's of complex and simple cells, researchers have been captivated by using
+techniques and ideas from neuroscience as building blocks for robust object 
+classification in a machine\cite{hubel}. To this end, ideas from neuroscience such as the Perceptron
+algorithm, convolution neural networks and most recently, deep belief networks have all
+had tremendous success in object recognition and machine learning. 
+
+A fundamental step for many object recognition algorithms is to learn heirarchies
+of features from images. Learnt features from a dataset afford the algorithm designer
+to then represent images in the dataset as linear combinations of the learnt features. 
+In some sense, this is the most natural reason to learn features, as they allow one 
+to transform the space of images into the space of images as represented by their features.
+This transformed space typically produces better results when running object classification
+algorithms - even naive classification techniques such as $k$-nearest neighbors. 
+
+Feature heirarchies can be learnt in a variety of ways, from semi-supervised learning
+algorithms to fully unsupervised learning algorithms. Nigam et al. describe how to 
+learn text classifiers when there are limited number of labeled examples \cite{nigam}. 
+They in a sense
+overcome the dearth of labeled examples by using unlabeled documents to support the data.
+This is a somewhat counterintuitive result, but can be rationalized by understanding that
+unlabeled data, based on inferences about which class an unlabeled example belongs to can
+be used to boost the joint probability distribution of features in the document. The authors
+ultimately used EM (Expectation Maximization) with the assumption that the underlying data
+arises from a mixture model to classify text. 
+
+Another recent approach for feature learning pioneered by Raina et al. runs under the 
+moniker of Self-Taught Learning. Self-Taught learning works similarly to the EM-based 
+approach described above, but makes no assumptions about the underlying distribution or
+classes of the unsupervised data (there is no assumption that the unlabeled data even 
+contains objects that are provided in the training and test datasets). Instead, they exploit
+the fact that the unsupervised data is a collection of natural images. This makes their
+algorithm significantly easier to apply in practice, as one can simply take a set of labeled
+examples, and augment it with an enormous unlabeled data-set of support examples.
+
+
+
 
 \section{Submission of papers to NIPS 2013}
 
@@ -405,28 +448,9 @@ acknowledgments go at the end of the paper. Do not include
 acknowledgments in the anonymized submission, only in the 
 final paper. 
 
-\subsubsection*{References}
+\subsubsection*{}
 
-References follow the acknowledgments. Use unnumbered third level heading for
-the references. Any choice of citation style is acceptable as long as you are
-consistent. It is permissible to reduce the font size to `small' (9-point) 
-when listing the references. {\bf Remember that this year you can use
-a ninth page as long as it contains \emph{only} cited references.}
-
-\small{
-[1] Alexander, J.A. \& Mozer, M.C. (1995) Template-based algorithms
-for connectionist rule extraction. In G. Tesauro, D. S. Touretzky
-and T.K. Leen (eds.), {\it Advances in Neural Information Processing
-Systems 7}, pp. 609-616. Cambridge, MA: MIT Press.
-
-[2] Bower, J.M. \& Beeman, D. (1995) {\it The Book of GENESIS: Exploring
-Realistic Neural Models with the GEneral NEural SImulation System.}
-New York: TELOS/Springer-Verlag.
-
-[3] Hasselmo, M.E., Schnell, E. \& Barkai, E. (1995) Dynamics of learning
-and recall at excitatory recurrent synapses and cholinergic modulation
-in rat hippocampal region CA3. {\it Journal of Neuroscience}
-{\bf 15}(7):5249-5262.
-}
+\bibliographystyle{abbrv}
+\bibliography{ref}
 
 \end{document}
