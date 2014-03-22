@@ -41,7 +41,9 @@ of Viola and Jones, features and feature learning techniques have been used
 year after year to improve existing object recognition algorithms, and increase 
 classification rates. In this work, we implement and evaluate an object classification framework 
 that first learns a dictionary of features, and subsequently uses this feature basis 
-to represent and classify images into categories. 
+to represent and classify images into categories. We evaluate our classification framework
+by analyzing its performance on the CIFAR-10 dataset, and also consider several optimizations
+and heuristics to help boost performance. 
 \end{abstract}
 
 \section{Introduction}
@@ -54,7 +56,7 @@ classification in a machine\cite{hubel}. To this end, ideas from neuroscience su
 algorithm, convolution neural networks and most recently, deep belief networks have all
 had tremendous success in object recognition and machine learning. 
 
-A fundamental step for many object recognition algorithms is to learn heirarchies
+A fundamental step for many object recognition algorithms is to learn hierarchies
 of features from images. Learnt features from a dataset afford the algorithm designer
 to then represent images in the dataset as linear combinations of the learnt features. 
 In some sense, this is the most natural reason to learn features, as they allow one 
@@ -63,7 +65,30 @@ This transformed space typically produces better results when running object cla
 algorithms - even naive classification techniques such as $k$-nearest neighbors. 
 
 Feature heirarchies can be learnt in a variety of ways, from semi-supervised learning
-algorithms to fully unsupervised learning algorithms. Nigam et al. describe how to 
+algorithms to fully unsupervised learning algorithms. 
+Our approach to feature learning relies on an elegant and simple algorithm that was
+recently published by Adam Coates and Andrew Ng \cite{coates}. They propose the use
+of $k$-means clustering for feature learning as it is a simple and easily paralellizable
+algorithm that can be deployed at scale. In an earlier work, they show how $k$-means in 
+practice is highly competitive against the state-of-the-art feature learning algorithms, 
+often beating them \cite{coates11}. In particular, they show a surprising result that 
+$k$-means based feature learning with a single layer neural network achieves state-of-the-art
+error rate on the CIFAR-10 dataset. 
+
+
+\section{Related Work}
+
+Object classification has had a long history of research and experimental results. In 
+particular, many researchers in the past decade have made attempts at understanding the 
+CIFAR-10 dataset with varying degrees of success. In this section we first describe
+several other methods for performing feature learning, consider several algorithms which
+use features to boost object classification performance, and finally describe the success
+of some of these methods on the CIFAR-10 dataset. 
+
+Feature learning can be split into three categories - supervised approaches
+semi-supervised approaches, and lastly unsupervised feature learning. 
+In terms of semi-supervised approaches, perhaps the most classic approach is that of 
+Nigam et al. who describes how to 
 learn text classifiers when there are limited number of labeled examples \cite{nigam}. 
 They in a sense
 overcome the dearth of labeled examples by using unlabeled documents to support the data.
@@ -73,8 +98,8 @@ be used to boost the joint probability distribution of features in the document.
 ultimately used EM (Expectation Maximization) with the assumption that the underlying data
 arises from a mixture model to classify text. 
 
-Another recent approach for feature learning pioneered by Raina et al. runs under the 
-moniker of Self-Taught Learning \cite{raina}. Self-Taught learning works similarly to 
+Another recent feature learning approach is pioneered by Raina et al. and runs under the 
+moniker of Self-Taught Learning \cite{raina}. Self-Taught Learning works similarly to 
 the EM-based 
 approach described above, but makes no assumptions about the underlying distribution or
 classes of the unsupervised data (there is no assumption that the unlabeled data even 
@@ -83,14 +108,11 @@ the fact that the unsupervised data is a collection of natural images. This make
 algorithm significantly easier to apply in practice, as one can simply take a set of labeled
 examples, and augment it with an enormous unlabeled data-set of support examples.
 
-Our approach to feature learning relies on an elegant and simple algorithm that was
-recently published by Adam Coates and Andrew Ng \cite{coates}. They propose the use
-of $k$-means clustering for feature learning as it is a simple and easily paralellizable
-algorithm that can be deployed at scale. In an earlier work, they show how $k$-means in 
-practice is highly competitive against the state-of-the-art feature learning algorithms, 
-often beating them \cite{coates11}. In particular, they show a surprising result that 
-$k$-means based feature learning with a single layer neural network achieves state-of-the-art
-error rate on the CIFAR-10 dataset. 
+Both approaches are interesting due to their real world practicality - which we are deeply
+concerned with. Both approaches augment their small set of labeled examples with a large 
+number of unlabeled examples, and use the unlabeled examples to improve performance on the
+test dataset. In the world, labeled examples are prohibitively costly -
+therefore it is imperative to have techniques that will be almost fully unsupervised. 
 
  
 \section{Submission of papers to NIPS 2013}
