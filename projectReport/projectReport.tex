@@ -2,6 +2,8 @@
 \usepackage{nips13submit_e,times}
 \usepackage{hyperref}
 \usepackage{url}
+\usepackage{graphicx}
+\usepackage{subcaption}
 %\documentstyle[nips13submit_09,times,art10]{article} % For LaTeX 2.09
 
 
@@ -35,91 +37,107 @@ Pittsburgh, PA 15213 \\
 \maketitle
 
 \begin{abstract}
-A major theme in modern object recognition research has been the use of 
+A major theme in modern object recognition research has been the use of
 features to boost classification techniques. Stemming from the seminal work
-of Viola and Jones, features and feature learning techniques have been used 
-year after year to improve existing object recognition algorithms, and increase 
-classification rates. In this work, we implement and evaluate an object classification framework 
-that first learns a dictionary of features, and subsequently uses this feature basis 
+of Viola and Jones, features and feature learning techniques have been used
+year after year to improve existing object recognition algorithms, and increase
+classification rates. In this work, we implement and evaluate an object classification framework
+that first learns a dictionary of features, and subsequently uses this feature basis
 to represent and classify images into categories. We evaluate our classification framework
 by analyzing its performance on the CIFAR-10 dataset, and also consider several optimizations
-and heuristics to help boost performance. 
+and heuristics to help boost performance.
 \end{abstract}
 
 \section{Introduction}
 
-Object Recognition as a field has its roots firmly embedded in a long history 
-of research in Neuroscience. Stemming from Hubel and Wiesel's discovery in the 
+Object Recognition as a field has its roots firmly embedded in a long history
+of research in Neuroscience. Stemming from Hubel and Wiesel's discovery in the
 late 1950's of complex and simple cells, researchers have been captivated by using
-techniques and ideas from neuroscience as building blocks for robust object 
+techniques and ideas from neuroscience as building blocks for robust object
 classification in a machine\cite{hubel}. To this end, ideas from neuroscience such as the Perceptron
 algorithm, convolution neural networks and most recently, deep belief networks have all
-had tremendous success in object recognition and machine learning. 
+had tremendous success in object recognition and machine learning.
 
 A fundamental step for many object recognition algorithms is to learn hierarchies
 of features from images. Learnt features from a dataset afford the algorithm designer
-to then represent images in the dataset as linear combinations of the learnt features. 
-In some sense, this is the most natural reason to learn features, as they allow one 
+to then represent images in the dataset as linear combinations of the learnt features.
+In some sense, this is the most natural reason to learn features, as they allow one
 to transform the space of images into the space of images as represented by their features.
 This transformed space typically produces better results when running object classification
-algorithms - even naive classification techniques such as $k$-nearest neighbors. 
+algorithms - even naive classification techniques such as $k$-nearest neighbors.
 
 Feature heirarchies can be learnt in a variety of ways, from semi-supervised learning
-algorithms to fully unsupervised learning algorithms. 
+algorithms to fully unsupervised learning algorithms.
 Our approach to feature learning relies on an elegant and simple algorithm that was
 recently published by Adam Coates and Andrew Ng \cite{coates}. They propose the use
 of $k$-means clustering for feature learning as it is a simple and easily paralellizable
-algorithm that can be deployed at scale. In an earlier work, they show how $k$-means in 
-practice is highly competitive against the state-of-the-art feature learning algorithms, 
-often beating them \cite{coates11}. In particular, they show a surprising result that 
+algorithm that can be deployed at scale. In an earlier work, they show how $k$-means in
+practice is highly competitive against the state-of-the-art feature learning algorithms,
+often beating them \cite{coates11}. In particular, they show a surprising result that
 $k$-means based feature learning with a single layer neural network achieves state-of-the-art
-error rate on the CIFAR-10 dataset. 
+error rate on the CIFAR-10 dataset.
 
 
 \section{Related Work}
 
-Object classification has had a long history of research and experimental results. In 
-particular, many researchers in the past decade have made attempts at understanding the 
+Object classification has had a long history of research and experimental results. In
+particular, many researchers in the past decade have made attempts at understanding the
 CIFAR-10 dataset with varying degrees of success. In this section we first describe
 several other methods for performing feature learning, consider several algorithms which
 use features to boost object classification performance, and finally describe the success
-of some of these methods on the CIFAR-10 dataset. 
+of some of these methods on the CIFAR-10 dataset.
 
 Feature learning can be split into three categories - supervised approaches
-semi-supervised approaches, and lastly unsupervised feature learning. 
-In terms of semi-supervised approaches, perhaps the most classic approach is that of 
-Nigam et al. who describes how to 
-learn text classifiers when there are limited number of labeled examples \cite{nigam}. 
+semi-supervised approaches, and lastly unsupervised feature learning.
+In terms of semi-supervised approaches, perhaps the most classic approach is that of
+Nigam et al. who describes how to
+learn text classifiers when there are limited number of labeled examples \cite{nigam}.
 They in a sense
 overcome the dearth of labeled examples by using unlabeled documents to support the data.
 This is a somewhat counterintuitive result, but can be rationalized by understanding that
 unlabeled data, based on inferences about which class an unlabeled example belongs to can
 be used to boost the joint probability distribution of features in the document. The authors
 ultimately used EM (Expectation Maximization) with the assumption that the underlying data
-arises from a mixture model to classify text. 
+arises from a mixture model to classify text.
 
-Another recent feature learning approach is pioneered by Raina et al. and runs under the 
-moniker of Self-Taught Learning \cite{raina}. Self-Taught Learning works similarly to 
-the EM-based 
+Another recent feature learning approach is pioneered by Raina et al. and runs under the
+moniker of Self-Taught Learning \cite{raina}. Self-Taught Learning works similarly to
+the EM-based
 approach described above, but makes no assumptions about the underlying distribution or
-classes of the unsupervised data (there is no assumption that the unlabeled data even 
+classes of the unsupervised data (there is no assumption that the unlabeled data even
 contains objects that are provided in the training and test datasets). Instead, they exploit
 the fact that the unsupervised data is a collection of natural images. This makes their
 algorithm significantly easier to apply in practice, as one can simply take a set of labeled
 examples, and augment it with an enormous unlabeled data-set of support examples.
 
 Both approaches are interesting due to their real world practicality - which we are deeply
-concerned with. Both approaches augment their small set of labeled examples with a large 
+concerned with. Both approaches augment their small set of labeled examples with a large
 number of unlabeled examples, and use the unlabeled examples to improve performance on the
 test dataset. In the world, labeled examples are prohibitively costly -
-therefore it is imperative to have techniques that will be almost fully unsupervised. 
+therefore it is imperative to have techniques that will be almost fully unsupervised.
 
 \section{Headings: first level}
 \label{headings}
 
-First level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 12. One line space before the first level
-heading and 1/2~line space after the first level heading.
+\begin{figure}
+  \centering
+  \begin{subfigure}[h]{0.45\columnwidth}
+    \includegraphics[width=\columnwidth]{./images/eigs192.png}
+    \caption{All 192 eigenvectors of a selection of 8x8 color patches from the CIFAR dataset.}
+    \label{figEigenvectors}
+  \end{subfigure}
+  \hspace{0.04\columnwidth}
+  \centering
+  \begin{subfigure}[h]{0.45\columnwidth}
+    \includegraphics[width=\columnwidth]{./images/patches100.png}
+    \caption{100 centroids learned from applying K-means to 8x8 patches extracted from natural images. Notice the similarity to Gabor wavelets.}
+    \label{fig_centroids}
+  \end{subfigure}
+\end{figure}
+
+In Figure \ref{figEigenvectors} we see that each eigenvector corresponds to a different frequency basis. These eigenvectors are very similar to those from the discrete cosine transform (DCT), which is often used in image compression.
+
+Figure \ref{fig_centroids} shows
 
 \subsection{Headings: second level}
 
@@ -150,7 +168,7 @@ first word and proper nouns); figures are numbered consecutively.
 Make sure the figure caption does not get separated from the figure.
 Leave sufficient space to avoid splitting the figure and figure caption.
 
-You may use color figures. 
+You may use color figures.
 However, it is best for the
 figure captions and the paper body to make sense if the paper is printed
 either in black/white or in color.
