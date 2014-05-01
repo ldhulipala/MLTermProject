@@ -275,36 +275,100 @@
   } 
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Results}{name=results,column=2,span=2,below=classification, below=pooling}{
+  \headerbox{Results}{name=results1,column=2,below=classification, below=pooling}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \begin{multicols}{2}
-        The method was evaluated on the GavabDB expression dataset which
-        contains 427 Scans, with 3 neutral scans and 4 expression scans per ID.
-        To test the impact of expression invariance on neutral data we used the
-        UND Dataset from the Face Recognition Great Vendor Test, which contains
-        953 neutral scans with one to eight scans per subject.
-      \end{multicols}\vspace{-1em}
-%      \mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
-%      \begin{tabular}{cc}
-%        \hspace{0.5em}\scalebox{0.74}{\input{shrec_MNCG}} &
-%        \hspace{0.5em}\scalebox{0.74}{\input{und_MNCG}}
-%      \end{tabular}\\
-        {Expression neutralization improves results on the expression dataset
-        without decreasing the accuracy on the neutral testset. Plotted is the
-        ratio of correct answers to  the number of possible correct answers.
-        %Note the different scales for the two graphs.
-        %Our approach has a high accuracy on the neutral (UND) dataset.
-        }
-%      \end{multicols}\vspace{-1em}
-      \\\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
-%      \begin{tabular}{cc}
-%        \hspace{0.5em}\scalebox{0.74}{\input{shrec_PR}} &
-%        \hspace{0.5em}\scalebox{0.74}{\input{und_PR}}
-%      \end{tabular}\\
+  \begin{center}
+  \includegraphics[width=0.6\colwidth]{graph1.png}
+  \captionof{figure}{Using PCA to perform dimension reduction is not always a good idea.}
+  \end{center}
+
+
+\begin{center}
+\label{tabAcc}
+\centering
+\begin{tabular}{|c|c|}
+  \hline
+  \textbf{Method} & \textbf{Accuracy}\\
+  \hline
+  Random & 10.0\%\\
+  Raw pixels & 37.3\%\\
+  K-means + all PCs & 77.9\%\\
+  K-means + 0.99 variance & 50.0\%\\
+  Sparse K-means & 83.0\%\\
+  \hline
+\end{tabular}
+\end{center}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Results}{name=results2,column=3,below=classification, below=classification}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\label{figSparseKM}
+\includegraphics[width=0.5\columnwidth]{graph2.png}
+\captionof{figure}{Sparse K-means helps us perform feature selection}
+\end{center}
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{graph3.png}
+\captionof{figure}{Sparse K-means helps us perform feature selection}
+\end{center}
+Figure \ref{tabAcc} shows the accuracy performed on CIFAR-10 from (1) randomly choosing a class (2) raw pixels fed into an SVM (3) the K-means algorithm described (4) K-means with PCA on patches (5) sparse K-means to reduce dimensionality.
+
+Running an SVM against raw pixels shows us that raw pixels do not make for a good feature representation for image classification.
+
+Running PCA on image patches also sacrifices a large amount of accuracy. If we were to run PCA on the data in Figure \ref{figSparseKM} we would not be able to get good clusters on the new space. This is reflected in the accuracy drop from using PCA based on the total variance of the data.
+
+
+
+%  \begin{center}
+%  \begin{tikzpicture}
+%  \begin{axis}[
+%      xlabel={Number of principle components used},
+%      ylabel={Accuracy / \%}]
+%    ]
+%      \addplot coordinates {
+%        (24, 50.14)
+%        (48, 54.177)
+%        (72, 60.341)
+%        (96, 62.334)
+%        (120, 64.027)
+%        (144, 73.415)
+%        (168, 75.628)
+%        (192, 77.9)
+%      };
+%  \end{axis}
+%  \end{tikzpicture}
+%  \end{center}
+
 %      \begin{multicols}{2}
-        {Plotted are precision and recall for different retrieval depths. The lower
-        precision of the UND database is due to the fact that some queries have no
-        correct answers.}
+%        The method was evaluated on the GavabDB expression dataset which
+%        contains 427 Scans, with 3 neutral scans and 4 expression scans per ID.
+%        To test the impact of expression invariance on neutral data we used the
+%        UND Dataset from the Face Recognition Great Vendor Test, which contains
+%        953 neutral scans with one to eight scans per subject.
+%      \end{multicols}\vspace{-1em}
+%%      \mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
+%%      \begin{tabular}{cc}
+%%        \hspace{0.5em}\scalebox{0.74}{\input{shrec_MNCG}} &
+%%        \hspace{0.5em}\scalebox{0.74}{\input{und_MNCG}}
+%%      \end{tabular}\\
+%        {Expression neutralization improves results on the expression dataset
+%        without decreasing the accuracy on the neutral testset. Plotted is the
+%        ratio of correct answers to  the number of possible correct answers.
+%        %Note the different scales for the two graphs.
+%        %Our approach has a high accuracy on the neutral (UND) dataset.
+%        }
+%%      \end{multicols}\vspace{-1em}
+%      \\\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
+%%      \begin{tabular}{cc}
+%%        \hspace{0.5em}\scalebox{0.74}{\input{shrec_PR}} &
+%%        \hspace{0.5em}\scalebox{0.74}{\input{und_PR}}
+%%      \end{tabular}\\
+%%      \begin{multicols}{2}
+%        {Plotted are precision and recall for different retrieval depths. The lower
+%        precision of the UND database is due to the fact that some queries have no
+%        correct answers.}
 %      \end{multicols}\vspace{-1em}
 %      \\\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
 %%      \begin{tabular}{cc}
@@ -315,10 +379,9 @@
 %        {Impostor detection is reliable, as the minimum distance to a match
 %        is smaller than the minimum distance to a nonmatch. }
 %      \end{multicols}
-\\
   }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Open Questions}{name=questions,column=2,span=1,above=bottom,below=results}{
+  \headerbox{Open Questions}{name=questions,column=2,span=1,above=bottom,below=results1}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Just as nesting hidden-layers in convolution DBN's produce successively 
     more general patterns, we are curious whether repeated applications of 
@@ -333,7 +396,7 @@
 %  This work was supported in part by Microsoft Research through the European PhD Scholarship Programme.
 %  }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{}{name=references,column=3,above=bottom,below=results}{
+  \headerbox{}{name=references,column=3,above=bottom,below=results2}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \smaller
 \bibliographystyle{abbrv}
