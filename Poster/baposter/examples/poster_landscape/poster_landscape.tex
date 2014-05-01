@@ -203,18 +203,12 @@
    pixels being highly correlated, as they are likely to have very similar RGBA values.
    Learning more general features allows us to represent data in a much more 
    efficient manner, and reduces both the memory and space utilization of machine
-   learning algorithms. 
+   learning algorithms. Our approach involves steps to learn a feature representation.
  }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Methodology}{name=method,column=0,below=motivation}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Our approach involves steps to learn a feature representation. We
-    are going to explain each step in the following sections.  
-  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Preprocessing}{name=preprocess,column=0,below=method, above=bottom}{
+  \headerbox{Preprocessing}{name=preprocess,column=0,below=motivation, above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     1. We extract random patches (8 $\times$ 8) from unlabeled training images.\\
     2. We apply PCA on those patches to reduce feature dimensions since each pixel 
