@@ -235,7 +235,7 @@
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{}{name=graph,column=1,row=0, below=clustering}{
+  \headerbox{Centroids as Features}{name=imageDisp,column=1,row=0, below=clustering, above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   Learned features show noticable similarities to Gabor wavelets, and
   patterns exhibited by neurons in the $V1$ cortex of the brain. 
@@ -247,33 +247,19 @@
 %      \end{center}
 %
   \begin{center}
-  \includegraphics[width=0.9\colwidth]{figs/eigs192.png}
+  \includegraphics[width=0.6\colwidth]{figs/eigs192.png}
   \captionof{figure}{All 192 eigenvectors from a selection of $8 \times 8$ patches.}
-%  \caption{All 192 eigenvectors from a selection of $8 \times 8$ patches.}
   \end{center}
-%  \includegraphics[height=0.4\colwidth]{figs/patches100.png}
-%  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
-%    \includegraphics[height=0.42\linewidth]{16_1_tgt}&
-%    \includegraphics[height=0.42\linewidth]{16_1_expression}&
-%    \includegraphics[height=0.42\linewidth]{16_1_neutral}\\[-0.8em]
-%    \smaller a) Target & \smaller b) Fit & \smaller c) Normalized\\[0.8em]
-%    \includegraphics[height=0.42\linewidth]{16_6_tgt}&
-%    \includegraphics[height=0.42\linewidth]{16_6_expression}&
-%    \includegraphics[height=0.42\linewidth]{16_6_neutral}\\[-0.8em]
-%    \smaller a) Target & \smaller b) Fit & \smaller c) Normalized
-%  \end{tabular}
-%  Plots for K-Means and Sparse K-Means.
+
+  \begin{center}
+  \includegraphics[width=0.5\colwidth]{figs/patches100.png}
+  \captionof{figure}{100 centroids learnt from applying $K$-means to $8 \times 8$ patches.}
+  \end{center}
   }
   
+   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Clustering}{name=clustering2,column=1,below=graph}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Selection of K is a function of how much data we have and runtime of the 
-    algorithm. 
-  }
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Pooling}{name=pooling,column=1,below=clustering2}{
+  \headerbox{Pooling}{name=pooling,column=2,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   1. For each labeled image, we extract all possible patches for it.\\
   2. Each patch extracted will correspond to a K-dimension vector. Let the 
@@ -283,17 +269,19 @@
   	 centroid j.\\
   3. We divide those patches into n groups and sum over each single column of the data 
      in each group. We will obtain n $\times$ K values and those will be the new features.
+  Finally, images are classified as follows:
+
   }
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Classification}{name=classification,column=1,below=pooling,above=bottom}{
+  \headerbox{Classification}{name=classification,column=3, row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   1. Divide labeled data into training and test sets. \\
   2. Pass these new features into SVM or other classifiers. 
   } 
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Results}{name=results,column=2,span=2,row=0}{
+  \headerbox{Results}{name=results,column=2,span=2,below=classification, below=pooling}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \begin{multicols}{2}
         The method was evaluated on the GavabDB expression dataset which
@@ -344,14 +332,14 @@
     possibilty to build an identity/expression separated model without using
     the data labelling, based on a measure of independence.
   }%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \headerbox{Funding}{name=funding,column=3,span=1,above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \smaller 
+%  This work was supported in part by Microsoft Research through the European PhD Scholarship Programme.
+%  }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Funding}{name=funding,column=3,span=1,above=bottom}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \smaller 
-  This work was supported in part by Microsoft Research through the European PhD Scholarship Programme.
-  }%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{References}{name=references,column=3,above=funding,below=results}{
+  \headerbox{}{name=references,column=3,above=bottom,below=results}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \smaller
 \bibliographystyle{abbrv}
