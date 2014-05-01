@@ -208,12 +208,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Methodology}{name=method,column=0,below=motivation}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Our approach involves a few steps to learn a feature representation. We
+    Our approach involves a  steps to learn a feature representation. We
     are going to explain each step in the following sections.  
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Preprocessing}{name=preprocess,column=0,below=method}{
+  \headerbox{Preprocessing}{name=preprocess,column=0,below=method, above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     1. We extract random patches (8 $\times$ 8) from unlabeled training images.\\
     2. We apply PCA on those patches to reduce feature dimensions since each pixel 
@@ -224,18 +224,18 @@
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Clustering}{name=clustering,column=1,below=preprocess,above=bottom}{
+  \headerbox{Clustering}{name=clustering,column=1,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    We run K-Means on the preprocessed patches. The parameter $K$ is predetermined. 
-    We want to select $K$ to be as large as possible without having many
-    singular clusters. Singular cluster is a cluster with no elements or very 
-    few elements in it. We use euclidean distance metric. After clustering, 
-    we will obtain K centroids.   \cite{coates}\\ 
+    We run K-Means on the preprocessed patches, using a predetermined parameter $k$. 
+    We want to select $k$ to be as large as possible without having many
+    singular clusters where a singular cluster is a cluster with no elements or very 
+    few elements in it. Clusters are computed using the $l_2$ norm, although other
+    metrics such as cosine-distance can easily be used.~\cite{coates}\\ 
   }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  \headerbox{}{name=graph,column=1,row=0}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{}{name=graph,column=1,row=0, below=clustering}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
 %    \includegraphics[height=0.42\linewidth]{16_1_tgt}&
 %    \includegraphics[height=0.42\linewidth]{16_1_expression}&
@@ -246,8 +246,8 @@
 %    \includegraphics[height=0.42\linewidth]{16_6_neutral}\\[-0.8em]
 %    \smaller a) Target & \smaller b) Fit & \smaller c) Normalized
 %  \end{tabular}
-%  Plots for K-Means and Sparse K-Means.
-%  }
+  Plots for K-Means and Sparse K-Means.
+  }
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Clustering}{name=clustering2,column=1,below=graph}{
