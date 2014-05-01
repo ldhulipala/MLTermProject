@@ -11,6 +11,7 @@
 \usepackage{tkz-berge}
 \usepackage[upright]{fourier}
 \usepackage{bm}
+\usepackage{caption}
 
 \usepackage{graphicx}
 \usepackage{multicol}
@@ -24,7 +25,7 @@
 %\usepackage{bookman}
 \usepackage{palatino}
 
-\newcommand{\captionfont}{\footnotesize}
+%\newcommand{\captionfont}{\footnotesize}
 
 \selectcolormodel{cmyk}
 
@@ -236,6 +237,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{}{name=graph,column=1,row=0, below=clustering}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  Learned features show noticable similarities to Gabor wavelets, and
+  patterns exhibited by neurons in the $V1$ cortex of the brain. 
+
+%\begin{center}
+%  \includegraphics{filename}
+%    \captionof{figure}{text}
+%      \label{fig:name}
+%      \end{center}
+%
+  \begin{center}
+  \includegraphics[width=0.9\colwidth]{figs/eigs192.png}
+  \captionof{figure}{All 192 eigenvectors from a selection of $8 \times 8$ patches.}
+%  \caption{All 192 eigenvectors from a selection of $8 \times 8$ patches.}
+  \end{center}
+%  \includegraphics[height=0.4\colwidth]{figs/patches100.png}
 %  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
 %    \includegraphics[height=0.42\linewidth]{16_1_tgt}&
 %    \includegraphics[height=0.42\linewidth]{16_1_expression}&
@@ -246,7 +262,7 @@
 %    \includegraphics[height=0.42\linewidth]{16_6_neutral}\\[-0.8em]
 %    \smaller a) Target & \smaller b) Fit & \smaller c) Normalized
 %  \end{tabular}
-  Plots for K-Means and Sparse K-Means.
+%  Plots for K-Means and Sparse K-Means.
   }
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
