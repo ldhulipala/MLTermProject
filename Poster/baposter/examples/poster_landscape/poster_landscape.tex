@@ -203,18 +203,12 @@
    pixels being highly correlated, as they are likely to have very similar RGBA values.
    Learning more general features allows us to represent data in a much more 
    efficient manner, and reduces both the memory and space utilization of machine
-   learning algorithms. 
+   learning algorithms. Our approach involves steps to learn a feature representation.
  }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Methodology}{name=method,column=0,below=motivation}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Our approach involves steps to learn a feature representation. We
-    are going to explain each step in the following sections.  
-  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Preprocessing}{name=preprocess,column=0,below=method, above=bottom}{
+  \headerbox{Preprocessing}{name=preprocess,column=0,below=motivation, above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     1. We extract random patches (8 $\times$ 8) from unlabeled training images.\\
     2. We apply PCA on those patches to reduce feature dimensions since each pixel 
@@ -326,11 +320,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Open Questions}{name=questions,column=2,span=1,above=bottom,below=results}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    While the expression and identity space are linearly independent, there is
-    some expression left in the identity model. This is because a ``neutral''
-    face is interpreted differently by the subjects. We investigate the
-    possibilty to build an identity/expression separated model without using
-    the data labelling, based on a measure of independence.
+    Just as nesting hidden-layers in convolution DBN's produce successively 
+    more general patterns, we are curious whether repeated applications of 
+    unsupervised feature learning can account for higher abstractions in features 
+    learning. Furthermore, it would be interesting to apply these techniques to 
+    non-image data, such as binary functions, or topic identification algorithms. 
   }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \headerbox{Funding}{name=funding,column=3,span=1,above=bottom}{
