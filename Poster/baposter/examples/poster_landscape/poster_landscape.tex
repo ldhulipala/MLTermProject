@@ -47,6 +47,10 @@
 \def\norm#1{\mathopen\| #1 \mathclose\|}% use instead of $\|x\|$
 \newcommand{\normLR}[1]{\left\| #1 \right\|}% use instead of $\|x\|$
 
+\makeatletter
+\newcommand*{\Tiny}{\@setfontsize\Tiny{12pt}{13pt}}
+\makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Multicol Settings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,11 +118,11 @@
   headerheight=0.08\textheight,
   headershape=roundedright,
   headershade=plain,
-  headerfont=\Large\textsf, %Sans Serif
+  headerfont=\Tiny, %\textsf, %Sans Serif
   boxshade=plain,
 %  background=shade-tb,
   background=plain,
-  linewidth=2pt
+  linewidth=1pt
   }
   % Eye Catcher
   {} % No eye catcher for this poster. If an eye catcher is present, the title is centered between eye-catcher and logo.
