@@ -179,54 +179,52 @@
    We implement an unsupervised method for learning features from images,
    which are then used for image classification. Our method is robust, and
    we experimentally show its performance on the CIFAR-10 dataset, a standard
-   dataset in the machine learning community. We implement and describe a 
-   feature-learning pipeline, which can be recursively applied in order to learn
-   successively more general features. 
+   dataset in the machine learning community.
+ }
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Problem}{name=problem,column=0,below=contribution}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   We want to learn feature representation for data with arbitrary form when 
+   the number of unlabeled data is much more than the number of labeled data.
+ }
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Motivation}{name=motivation,column=0,below=problem}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   Learning features allows us to represent data in a more efficient manner.
  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Model}{name=model,column=0,below=contribution}{
+  \headerbox{Methodology}{name=method,column=0,below=motivation}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    The Model was learnt from 175 subjects. We used one neutral expression scan
-    per identity and 50 expression scans of a subset of the subjects. 
-
-    The identity model is a linear model build from the neutral scans.
-    \begin{align}
-      \VEC f&=\VEC\mu + \MAT M_n\VEC\alpha_n\qquad.
-    \end{align}
-    For each of the 50 expression scans, we calculated an expression vector as
-    the difference between the expression scan and the corresponding neutral
-    scan of that subject.  This data is already mode-centered, if we regard the
-    neutral expression as the natural mode of expression data. From these offset
-    vectors an additional expression matrix $\MAT M_e$ was calculated, such that the complete linear Model is
-    \begin{align}
-      \VEC f&=\VEC\mu + \MAT M_n\VEC\alpha_n + \MAT M_e\VEC\alpha_e
-    \end{align}
-    The assumption here is, that the face and expression space are linearly
-    independent, such that each face is represented by a unique set of
-    coefficients.  
+    Our approach involves a few steps to learn a feature representation. We
+    are going to explain each step in the following sections.  
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Fitting}{name=fitting,column=0,below=model}{
+  \headerbox{Preprocess}{name=preprocess,column=0,below=method}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    A Robust Nonrigid ICP method was used to fit the model to the data.
-    Robustness was achieved by iteratively reweighting the correspondences and
-    using hard compatability test for the closest points.
-
-    Fitting was initialized by a simple nose detector and proceeded fully
-    automatic.
+    1. We extract random patches (8 $\times$ 8) from unlabeled training images.\\
+    2. We apply PCA on those patches to reduce feature dimensions since each pixel 
+       is a feature in the original patch. (Optional step) \\
+    3. Normalize data so that mean is zero and variance is one. \\ 
+    4. We whiten data to eliminate correlations between neighboring pixels. (Neighboring
+       pixels tend to have similar colors.)  
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Distance Measure}{name=measure,column=0,below=fitting,above=bottom}{
+  \headerbox{Clustering}{name=clustering,column=0,below=preprocess,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   The Mahalanobis angle between the identity coefficients $\VEC{\alpha_{n}}$
-   was used for classification.
+    We run K-Means on the preprocessed patches. Parameter K is predetermined. 
+    We want to select K to be as large as possible without having lots of
+    singular clusters. Singular cluster is a cluster with no elements or very 
+    few elements in it. We use euclidean distance metric. After clustering, 
+    we will obtain K centroids.   \cite{coates}\\ 
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Expression Neutralization}{name=results neutralization,column=1,row=0}{
+  \headerbox{}{name=graph,column=1,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
     \includegraphics[height=0.42\linewidth]{16_1_tgt}&
@@ -238,28 +236,36 @@
     \includegraphics[height=0.42\linewidth]{16_6_neutral}\\[-0.8em]
     \smaller a) Target & \smaller b) Fit & \smaller c) Normalized
   \end{tabular}
-  Expression normalisation for two scans of the same individual.  
-  The robust fitting gives a good estimate (b) of the true face surface given
-  the noisy measurement (a). It fills in holes and removes artifacts using
-  prior knowledge from the face model. The pose and expression normalized faces
-  (c) are used for face recognition.
+  Plots for K-Means and Sparse K-Means.
   }
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Robustness}{name=robustness,column=1,below=results neutralization,span=1,above=bottom}{
+  \headerbox{Clustering}{name=clustering2,column=1,below=graph}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}}
-    \includegraphics[height=0.42\linewidth]{56_4_tgt}&
-    \includegraphics[height=0.42\linewidth]{23_2_tgt}&
-    \includegraphics[height=0.42\linewidth]{5_6_tgt}\\[-0.8em]
-                       & \smaller a) Targets & \\[0.8em]
-    \includegraphics[height=0.42\linewidth]{56_4_expression}&
-    \includegraphics[height=0.42\linewidth]{23_2_expression}& 
-    \includegraphics[height=0.42\linewidth]{5_6_expression}\\[-0.8em]
-                    & \smaller b) Fits & 
-  \end{tabular}
-  The reconstruction (b) is robust against scans (a) with artifacts, noise, and
-  holes.
+    Selection of K is a function of how much data we have and runtime of the 
+    algorithm. 
   }
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Pooling}{name=pooling,column=1,below=clustering2}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  1. For each labeled image, we extract all possible patches for it.\\
+  2. Each patch extracted will correspond to a K-dimension vector. Let the 
+  	 vector corresponding to the i$^{\text{th}}$ patch be $v_i$. Element $v_{ij}$ equals 
+  	 max(0, $\mu_i$ - $x_{ij}$) where $\mu_i$ is the average distance from the
+  	 patch to each centroid and $x_{ij}$ is the distance from patch i to 
+  	 centroid j.\\
+  3. We divide those patches into n groups and sum over each single column of the data 
+     in each group. We will obtain n $\times$ K values and those will be the new features.
+  }
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Classification}{name=classification,column=1,below=pooling,above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  1. Divide labeled data into training and test sets. \\
+  2. Pass these new features into SVM or other classifiers. 
+  } 
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Results}{name=results,column=2,span=2,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -324,6 +330,7 @@
 \smaller
 \bibliographystyle{abbrv}
 \bibliography{ref}
+
 
 %    \smaller
 %    \vspace{-0.4em}
