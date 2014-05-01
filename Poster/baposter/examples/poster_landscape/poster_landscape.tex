@@ -165,14 +165,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Contribution}{name=contribution,column=0,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   {}We introduce a method for expression invariant face recognition. A
-   generative 3D Morphable Model (3DMM) is used to separate identity and
-   expression components. The expression removal results in greatly increased
-   recognition performance, even on difficult datasets, without a decrease in
-   performance on expression-less datasets.
-
-   It is applicable to any kind of input data, and was evaluated here on
-   textureless range scans.
+   {}
+   
+   We implement an unsupervised method for learning features from images,
+   which are then used for image classification. Our method is robust, and
+   we experimentally show its performance on the CIFAR-10 dataset, a standard
+   dataset in the machine learning community. We implement and describe a 
+   feature-learning pipeline, which can be recursively applied in order to learn
+   successively more general features. 
  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -312,21 +312,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{References}{name=references,column=3,above=funding,below=results}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \smaller
-    \vspace{-0.4em}
-    \bibliographystyle{ieee}
-    \renewcommand{\section}[2]{\vskip 0.05em}
-      \begin{thebibliography}{1}\itemsep=-0.01em
-      \setlength{\baselineskip}{0.4em}
-      \bibitem{amberg07:nonrigid}
-        B.~Amberg, S.~Romdhani, T. Vetter.
-        \newblock {O}ptimal {S}tep {N}onrigid {ICP} {A}lgorithms for {S}urface {R}egistration
-        \newblock In {\em CVPR 2007}
-      \bibitem{amberg08:recognition}
-        B.~Amberg, R.~Knothe, T. Vetter.
-        \newblock Expression Invariant Face Recognition with a 3D Morphable Model
-        \newblock In {\em AFGR 2008}
-      \end{thebibliography}
+\smaller
+\bibliographystyle{abbrv}
+\bibliography{ref}
+
+%    \smaller
+%    \vspace{-0.4em}
+%    \bibliographystyle{ieee}
+%    \renewcommand{\section}[2]{\vskip 0.05em}
+%      \begin{thebibliography}{1}\itemsep=-0.01em
+%      \setlength{\baselineskip}{0.4em}
+%      \bibitem{amberg07:nonrigid}
+%        B.~Amberg, S.~Romdhani, T. Vetter.
+%        \newblock {O}ptimal {S}tep {N}onrigid {ICP} {A}lgorithms for {S}urface {R}egistration
+%        \newblock In {\em CVPR 2007}
+%      \bibitem{amberg08:recognition}
+%        B.~Amberg, R.~Knothe, T. Vetter.
+%        \newblock Expression Invariant Face Recognition with a 3D Morphable Model
+%        \newblock In {\em AFGR 2008}
+%      \end{thebibliography}
   }%
 \end{poster}%
 %
