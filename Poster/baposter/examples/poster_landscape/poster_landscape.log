@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  1 MAY 2014 00:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  1 MAY 2014 12:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -846,20 +846,34 @@ LaTeX Font Info:    Redeclaring math accent \dot on input line 255.
 LaTeX Font Info:    Redeclaring math accent \mathring on input line 256.
 \symUfutm=\mathgroup10
 )
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2012/02/19 v3.2f Customizing captions (AR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
+\captionmargin=\dimen178
+\captionmargin@=\dimen179
+\captionwidth=\dimen180
+\caption@indent=\dimen181
+\caption@parindent=\dimen182
+\caption@hangindent=\dimen183
+)
+\c@ContinuedFloat=\count146
+)
 (/usr/local/texlive/2012/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
-\c@tracingmulticols=\count146
+\c@tracingmulticols=\count147
 \mult@box=\box44
-\multicol@leftmargin=\dimen178
-\c@unbalance=\count147
-\c@collectmore=\count148
-\doublecol@number=\count149
-\multicoltolerance=\count150
-\multicolpretolerance=\count151
-\full@width=\dimen179
-\page@free=\dimen180
-\premulticols=\dimen181
-\postmulticols=\dimen182
+\multicol@leftmargin=\dimen184
+\c@unbalance=\count148
+\c@collectmore=\count149
+\doublecol@number=\count150
+\multicoltolerance=\count151
+\multicolpretolerance=\count152
+\full@width=\dimen185
+\page@free=\dimen186
+\premulticols=\dimen187
+\postmulticols=\dimen188
 \multicolsep=\skip72
 \multicolbaselineskip=\skip73
 \partial@page=\box45
@@ -885,14 +899,14 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \@tempa=\box65
 \@tempa=\box66
 \@tempa=\box67
-\c@columnbadness=\count152
-\c@finalcolumnbadness=\count153
-\last@try=\dimen183
-\multicolovershoot=\dimen184
-\multicolundershoot=\dimen185
+\c@columnbadness=\count153
+\c@finalcolumnbadness=\count154
+\last@try=\dimen189
+\multicolovershoot=\dimen190
+\multicolundershoot=\dimen191
 \mult@nat@firstbox=\box68
 \colbreak@box=\box69
-\multicol@sort@counter=\count154
+\multicol@sort@counter=\count155
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/pgf/basiclayer/pgfbaselayers.sty
 
@@ -917,66 +931,66 @@ LaTeX Warning: Unused global option(s):
 (./poster_landscape.aux)
 \openout1 = `poster_landscape.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 75.
-LaTeX Font Info:    Try loading font information for FML+futm on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 76.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 76.
 
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 75.
-LaTeX Font Info:    Try loading font information for FMS+futm on input line 75.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 76.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 76.
 
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 75.
-LaTeX Font Info:    Try loading font information for FMX+futm on input line 75.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 76.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 76.
 
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/fourier/fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 75.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 76.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 75.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 76.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count155
-\scratchdimen=\dimen186
+\scratchcounter=\count156
+\scratchdimen=\dimen192
 \scratchbox=\box74
-\nofMPsegments=\count156
-\nofMParguments=\count157
+\nofMPsegments=\count157
+\nofMParguments=\count158
 \everyMPshowfont=\toks31
-\MPscratchCnt=\count158
-\MPscratchDim=\dimen187
-\MPnumerator=\count159
-\makeMPintoPDFobject=\count160
+\MPscratchCnt=\count159
+\MPscratchDim=\dimen193
+\MPnumerator=\count160
+\makeMPintoPDFobject=\count161
 \everyMPtoPDFconversion=\toks32
 ) ABD: EveryShipout initializing macros
 (/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
@@ -1057,51 +1071,53 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 Poster Starts
 <seal.png, id=20, 1003.75pt x 1003.75pt>
 File: seal.png Graphic file (type png)
  <use seal.png>
-Package pdftex.def Info: seal.png used on input line 151.
+Package pdftex.def Info: seal.png used on input line 152.
 (pdftex.def)             Requested size: 54.99965pt x 55.0pt.
-LaTeX Font Info:    Try loading font information for T1+futs on input line 151.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 152.
 
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/fourier/t1futs.fd
 File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 151.
+(Font)              scaled to size 9.19998pt on input line 152.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 151.
+(Font)              scaled to size 6.99199pt on input line 152.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 151.
-LaTeX Font Info:    Try loading font information for U+msa on input line 151.
+(Font)              scaled to size 5.51999pt on input line 152.
+LaTeX Font Info:    Try loading font information for U+msa on input line 152.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 151.
+LaTeX Font Info:    Try loading font information for U+msb on input line 152.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for FML+futmi on input line 15
-1.
+2.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 151.
+(Font)              scaled to size 9.19998pt on input line 152.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 151.
+(Font)              scaled to size 6.99199pt on input line 152.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 151.
+(Font)              scaled to size 5.51999pt on input line 152.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 151.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 152.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 151.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 151.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 152.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 152.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
@@ -1124,80 +1140,41 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-LaTeX Warning: Citation `coates' on page 1 undefined on input line 224.
+LaTeX Warning: Citation `coates' on page 1 undefined on input line 235.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
-
- []
-
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-<images/16_1_tgt.png, id=22, 301.125pt x 381.425pt>
-File: images/16_1_tgt.png Graphic file (type png)
- <use images/16_1_tgt.png>
-Package pdftex.def Info: images/16_1_tgt.png used on input line 240.
-(pdftex.def)             Requested size: 74.01749pt x 93.75887pt.
-
-<images/16_1_expression.png, id=23, 301.125pt x 381.425pt>
-File: images/16_1_expression.png Graphic file (type png)
-
-<use images/16_1_expression.png>
-Package pdftex.def Info: images/16_1_expression.png used on input line 240.
-(pdftex.def)             Requested size: 74.01749pt x 93.75887pt.
-
-<images/16_1_neutral.png, id=24, 301.125pt x 381.425pt>
-File: images/16_1_neutral.png Graphic file (type png)
-
-<use images/16_1_neutral.png>
-Package pdftex.def Info: images/16_1_neutral.png used on input line 240.
-(pdftex.def)             Requested size: 74.01749pt x 93.75887pt.
-
-<images/16_6_tgt.png, id=25, 301.125pt x 381.425pt>
-File: images/16_6_tgt.png Graphic file (type png)
- <use images/16_6_tgt.png>
-Package pdftex.def Info: images/16_6_tgt.png used on input line 240.
-(pdftex.def)             Requested size: 74.01749pt x 93.75887pt.
-
-<images/16_6_expression.png, id=26, 301.125pt x 381.425pt>
-File: images/16_6_expression.png Graphic file (type png)
-
-<use images/16_6_expression.png>
-Package pdftex.def Info: images/16_6_expression.png used on input line 240.
-(pdftex.def)             Requested size: 74.01749pt x 93.75887pt.
-
-<images/16_6_neutral.png, id=27, 301.125pt x 381.425pt>
-File: images/16_6_neutral.png Graphic file (type png)
-
-<use images/16_6_neutral.png>
-Package pdftex.def Info: images/16_6_neutral.png used on input line 240.
-(pdftex.def)             Requested size: 74.01749pt x 93.75887pt.
-
-Overfull \hbox (6.31609pt too wide) in paragraph at lines 240--240
-[][]
- []
-
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--311
+Underfull \hbox (badness 10000) in paragraph at lines 235--235
 
  []
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+<figs/eigs192.png, id=22, 576.1525pt x 489.83pt>
+File: figs/eigs192.png Graphic file (type png)
+ <use figs/eigs192.png>
+Package pdftex.def Info: figs/eigs192.png used on input line 258.
+(pdftex.def)             Requested size: 139.94324pt x 118.97421pt.
+
+<figs/patches100.png, id=23, 562.1pt x 490.83376pt>
+File: figs/patches100.png Graphic file (type png)
+ <use figs/patches100.png>
+Package pdftex.def Info: figs/patches100.png used on input line 258.
+(pdftex.def)             Requested size: 116.61818pt x 101.82738pt.
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
+
+ []
+
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1214,33 +1191,33 @@ Missing character: There is no ; in font nullfont!
  [2
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./seal.
-png> <./images/16_1_tgt.png> <./images/16_1_expression.png> <./images/16_1_neut
-ral.png> <./images/16_6_tgt.png> <./images/16_6_expression.png> <./images/16_6_
-neutral.png>] (./poster_landscape.aux)
+png> <./figs/eigs192.png> <./figs/patches100.png>]
+(./poster_landscape.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 16113 strings out of 493488
- 311005 string characters out of 3141326
- 405662 words of memory out of 3000000
- 19001 multiletter control sequences out of 15000+200000
- 52907 words of font info for 78 fonts, out of 3000000 for 9000
+ 16958 strings out of 493488
+ 325463 string characters out of 3141326
+ 408733 words of memory out of 3000000
+ 19842 multiletter control sequences out of 15000+200000
+ 52983 words of font info for 80 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 63i,15n,70p,427b,963s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,10n,92p,427b,963s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/fourier/fourier-ml.pfb></usr/local/te
 xlive/2012/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/tex
-live/2012/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/local/texlive/2
-012/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2012/tex
-mf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2012/texmf-dist
-/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/
-type1/urw/palatino/uplri8a.pfb>
-Output written on poster_landscape.pdf (1 page, 1094433 bytes).
+live/2012/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/20
+12/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/local/texlive/2012/tex
+mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2012/texmf-dist
+/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/
+type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/u
+rw/palatino/uplri8a.pfb>
+Output written on poster_landscape.pdf (1 page, 1492535 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
+ 67 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 124 words of extra memory for PDF output out of 10000 (max. 10000000)
 
