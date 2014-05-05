@@ -116,8 +116,26 @@ number of unlabeled examples, and use the unlabeled examples to improve performa
 test dataset. In the world, labeled examples are prohibitively costly -
 therefore it is imperative to have techniques that will be almost fully unsupervised.
 
-\section{Headings: first level}
-\label{headings}
+\section{Datasets}
+We choose to evaluate our object classification algorithm on two particular datasets, CIFAR-10 and STL-10. CIFAR-10 is a standard dataset of 32x32 color images of a single object in one of ten categories. It contains 60,000 labeled images, with 50,000 for training and 10,000 for testing. \\
+\\
+STL-10 is a more recent dataset of 92x92 color images, again of single objects in one of ten cate- gories. However, STL-10 is better designed for unsupervised feature learning. In particular, there are three sections of the dataset: \\
+
+\begin{itemize}
+  \item 100,000unlabeledcolornaturalimages,ofwhichonlyasubsetareoneofthetencategories.
+  \item 5000 training images, 500 per class.
+  \item 8000 test images, 800 per class.
+\end{itemize}
+
+Notice that there are far fewer labeled images than in CIFAR-10. This makes it a better metric to compared unsupervised methods, since the feature learning stage becomes far more important than the specific supervised classfier we use at the end.
+
+\section{Algorithm}
+We now describe the image classification algorithm, based on [1]. Assume that we have a dataset with large amounts of unlabeled data from a similar domain to the classification algorithm. Notice that this assumption differs from that in semi-supervised learning in that we are not garanteed that the unlabeled data contains only examples from what we want to classify. For example, if we are classifying birds vs. planes we may have images of buildings or plants in the unlabeled data.
+
+\begin{enumerate}
+  \item Extract random patches from the unsupervised data. Normalize the patches, so that each patch has mean 0 and 		standard deviation 1. Whiten the input patches to make the covariance matrix of the each patch approximately the identity matrix. This can be done via PCA or ZCA, as described in \cite{kriz}. 
+  
+	\label{headings}
 
 \begin{figure}
   \centering
@@ -134,79 +152,26 @@ therefore it is imperative to have techniques that will be almost fully unsuperv
     \label{fig_centroids}
   \end{subfigure}
 \end{figure}
+  
+  This means that we do not waste learning resources learning unneccessary imformation, such as knowing that neighboring pixels are more likely to have similar colors.
+In Figure 1a we show the eigenvectors we extract when performing PCA/ZCA. We see that each eigenvector corresponds to a different frequency basis. These eigenvectors are very similar to those from the discrete cosine transform (DCT), which is often used in image compression. \\
+\\
+We can also optionally use PCA to reduce the dimensionality of the data. This doesn’t help with accuracy of the quality of features learned, but it does speed up the pipeline significantly.
 
-In Figure \ref{figEigenvectors} we see that each eigenvector corresponds to a different frequency basis. These eigenvectors are very similar to those from the discrete cosine transform (DCT), which is often used in image compression.
+  \item Cluster these patches using K-means with the euclidean or cosine distance metric. Gener- ally it is best to pick as large a k as the amount of data will allow, however metrics such as silhouette scoring etc. can also be useful if data is severely limited. Figure 1b shows the centroids learned when performing euclidean K-means with 100 centroids. These features are similar to those learned by blind source seperation, such as ICA \cite{hoyer}
+  
+  \item For each training example, extract all patches from each image. Normalize and whiten these patches as in 1. Get some measure of ‘distance’ from the centroids learned by K- means. There are many approaches that can be taken here. For example, we can find the euclidean distance to each patch or convolve each centroid with the whitened patches from the image. We can also use the distance metric suggested by Coates which has the benefit of adding some sparsity: $f_{ij} = $max(0, $\mu_i - x_{ij}$), where $\mu_i$ is the average distance from the patch to each centroid and $x_{ij}$ is the distance from patch i to centroid j.
+  
+  \item Pool these feature responses in order to reduce the dimensionality. One approach is to pool the responses into a n $\times$ n grid.
+  
+  \item Pass these features into your favorite linear classifier (e.g. SVM or logistic regression) or pass these features back into the K-means pipeline described above.
+\end{enumerate}
 
-Figure \ref{fig_centroids} shows
+\newpage
 
-\subsection{Headings: second level}
-
-Second level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 10. One line space before the second level
-heading and 1/2~line space after the second level heading.
-
-\subsubsection{Headings: third level}
-
-Third level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 10. One line space before the third level
-heading and 1/2~line space after the third level heading.
-
-\section{Citations, figures, tables, references}
-\label{others}
-
-These instructions apply to everyone, regardless of the formatter being used.
-
-\subsection{Figures}
-
-All artwork must be neat, clean, and legible. Lines should be dark
-enough for purposes of reproduction; art work should not be
-hand-drawn. The figure number and caption always appear after the
-figure. Place one line space before the figure caption, and one line
-space after the figure. The figure caption is lower case (except for
-first word and proper nouns); figures are numbered consecutively.
-
-Make sure the figure caption does not get separated from the figure.
-Leave sufficient space to avoid splitting the figure and figure caption.
-
-You may use color figures.
-However, it is best for the
-figure captions and the paper body to make sense if the paper is printed
-either in black/white or in color.
-\begin{figure}[h]
-\begin{center}
-%\framebox[4.0in]{$\;$}
-\fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
-\end{center}
-\caption{Sample figure caption.}
-\end{figure}
-
-\subsection{Tables}
-
-All tables must be centered, neat, clean and legible. Do not use hand-drawn
-tables. The table number and title always appear before the table. See
-Table~\ref{sample-table}.
-
-Place one line space before the table title, one line space after the table
-title, and one line space after the table. The table title must be lower case
-(except for first word and proper nouns); tables are numbered consecutively.
-
-\begin{table}[t]
-\caption{Sample table title}
-\label{sample-table}
-\begin{center}
-\begin{tabular}{ll}
-\multicolumn{1}{c}{\bf PART}  &\multicolumn{1}{c}{\bf DESCRIPTION}
-\\ \hline \\
-Dendrite         &Input terminal \\
-Axon             &Output terminal \\
-Soma             &Cell body (contains cell nucleus) \\
-\end{tabular}
-\end{center}
-\end{table}
-
-\subsubsection*{}
-
-\bibliographystyle{abbrv}
+\bibliographystyle{acm}
 \bibliography{ref}
+
+
 
 \end{document}
