@@ -40,7 +40,8 @@
   Raw pixels & 37.3\%\\
   K-means + all PCs & 77.9\%\\
   K-means + 0.99 variance & 50.0\%\\
-  Sparse K-means & 83.0\%\\
+  3 layers & 82.0\%\\
+  Sparse 3 layers & 83.5\%\\
   \hline
 \end{tabular}
 \end{figure}
@@ -50,8 +51,20 @@
 \includegraphics[width=\columnwidth]{./sparse.png}
 \caption{Sparse K-means helps us perform feature selection}
 \end{figure}
-Figure \ref{tabAcc} shows the accuracy performed on CIFAR-10 from (1) randomly choosing a class (2) raw pixels fed into an SVM (3) the K-means algorithm described (4) K-means with PCA on patches (5) sparse K-means to reduce dimensionality.
+Figure \ref{tabAcc} shows the accuracy of different algorithms with all 50000 training examples from CIFAR-10. The algorithms were
 
+\subsection{Sparse K-Means}
+
+K-means is not by default robust to non-discriminative features. Specifically, if we have a lot of features that will not help us to seperate different classes, then those features will actually hurt the clustering algorithm. This problem is shown in figure (sparse classed k-means). Here, we notice that the second feature does not help us to determine which class a point belongs to. Worse, in this case it actually changes the assignment of the clusters. We want to remove these features from consideration.
+
+\begin{itemize}
+\item[1.] randomly choosing a class.
+\item[2.] Taking the raw pixels from each image and feeding them into an SVM
+\item[3.] Single layer K-means we have described above.
+\item[4.] K-means with PCA run on the patches, keeping 99\% of the variance.
+\item[5.] Stacking the K-means feature learner into a deep network.
+\item[6.] 3-layer network, but we use sparse K-means at the deeper levels.
+\end{itemize}
 Running an SVM against raw pixels shows us that raw pixels do not make for a good feature representation for image classification.
 
 Running PCA on image patches also sacrifices a large amount of accuracy. If we were to run PCA on the data in Figure \ref{figSparseKM} we would not be able to get good clusters on the new space. This is reflected in the accuracy drop from using PCA based on the total variance of the data.
